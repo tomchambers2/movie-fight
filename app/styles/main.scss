@@ -30,6 +30,18 @@ h1 {
   text-transform: uppercase;
 }
 
+body > h2 {
+  font-size: 2em;
+  width: 100%;
+  background: #fff;
+  text-align: center;
+  display: inline-block;
+  font-family: 'Fjalla One', sans-serif;  
+  line-height: 40px;
+  font-size: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);  
+}
+
 h2 {
   margin: 0;
 }
