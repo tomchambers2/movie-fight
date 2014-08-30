@@ -28,9 +28,9 @@ angular.module('moviefightApp')
 	  			$scope.query = '';
 	  			$scope.year = '';
 	  		} else {
-	  			var message = 'Sorry, we couldn\'t find that movie.';
+	  			var message = 'Sorry, we couldn\'t find that movie';
 	  			if (!$scope.year) {
-	  				message += ' Try adding a year?';
+	  				message += '. Try adding a year?';
 	  			}
 	  			showMessage(message);
 	  		}
