@@ -1,0 +1,52 @@
+<form name="searchbox" role="form" novalidate>
+  <fieldset ng-disabled="loading">
+    Movie title: <input type="text" ng-model="query" name="query" placeholder="batman begins" required autofocus>
+    Year (optional): <input type="text" name="year" ng-model="year" placeholder="2005"> 
+
+    <div class="control">
+      <button ng-click="search()" ng-hide="loading" ng-disabled="searchbox.query.$invalid" class="btn btn-default">Add to comparison</button>
+      <div class="loading" ng-show="loading"></div>
+    </div>
+  </fieldset>
+</form>
+
+<div class="alert alert-danger" ng-show="message">{{message}}</div>
+
+<div class="default-message" ng-hide="!!movies.length">No movies chosen yet. Add them one at a time using the search box above.</div>
+
+<table class="table">
+  <tr>
+    <td ng-repeat="movie in movies"><a ng-href="http://www.imdb.com/title/{{movie.imdbId}}">{{movie.Title}}</a></td>
+  </tr>
+  <tr>
+    <td ng-repeat="movie in movies"><img ng-if="movie.Poster !== 'N/A'" ng-src="{{movie.Poster}}" class="poster" alt="Movie poster for {{movie.Title}}"></td>
+  </tr>
+  <tr>
+    
+    <td ng-repeat="movie in movies">{{movie.Year}}</td>
+  </tr>
+  <tr>
+    <td ng-repeat="movie in movies"><h2>{{movie.imdbRating}}</h2></td>
+  </tr>
+  <tr>
+    <td ng-repeat="movie in movies">{{movie.rt}}%</td>
+  </tr>
+  <tr>
+    <td ng-repeat="movie in movies">{{movie.Plot}}</td>
+  </tr>
+  <tr>
+    <td ng-repeat="movie in movies">{{movie.Actors}}</td>
+  </tr>
+  <tr>
+    <td ng-repeat="movie in movies">{{movie.Runtime}}</td>
+  </tr>
+  <tr>
+    <td ng-repeat="movie in movies">{{movie.Rated}}</td>
+  </tr>
+  <tr>
+    <td ng-repeat="movie in movies"><youtube yId="{{trailer}}"></youtube></td>
+  </tr>
+  <tr>
+    <td ng-repeat="movie in movies"><span class="glyphicon glyphicon-remove-circle" ng-click="remove({{$index}})"></span></td>
+  </tr>
+</table>
