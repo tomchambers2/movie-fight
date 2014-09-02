@@ -56,6 +56,7 @@ angular.module('moviefightApp')
   	};
 
   	$scope.remove = function(id) {
+      console.log("removing "+id)
   		$scope.movies.splice(id,1);
   		mixpanel.track('removed-movie');
   	};

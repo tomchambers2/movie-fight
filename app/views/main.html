@@ -22,20 +22,21 @@
 <div class="alert alert-danger" ng-show="message">{{message}}</div>
 
 <div class="default-message" ng-hide="!!movies.length">
-  <p><strong>No movies chosen yet</strong></p>
+  <p><strong>No movies being compared yet</strong></p>
   <p>Add them one at a time using the search box above</p>
 </div>
 
 <table class="table">
   <tr>
-    <td class="title" ng-repeat="movie in movies"><a ng-href="http://www.imdb.com/title/{{movie.imdbID}}" target="_blank"><strong>{{movie.Title}} ({{movie.Year}})</a></strong><span class="right glyphicon glyphicon-remove" ng-click="remove({{$index}})"></span></td>
+    <td class="title" ng-repeat="movie in movies"><a ng-href="http://www.imdb.com/title/{{movie.imdbID}}" target="_blank"><strong>{{movie.Title}} ({{movie.Year}})</a></strong><span class="right glyphicon glyphicon-remove" ng-click="remove($index)"></span></td>
   </tr>
   <tr>
-    <td ng-repeat="movie in movies"><h2>IMDB: {{movie.imdbRating}}</h2></td>
+    <td ng-repeat="movie in movies"><h2>Rating: {{movie.imdbRating}}</h2></td>
   </tr>  
-  <tr>
-    <td ng-repeat="movie in movies"><a ng-href="http://www.imdb.com/title/{{movie.imdbID}}" target="_blank"><img ng-if="movie.Poster !== 'N/A'" ng-src="{{movie.Poster}}" class="poster" alt="Movie poster for {{movie.Title}}"></a></td>
-  </tr>
+  <!--- imdb doesn't allow hotlinking! <tr>
+    <td ng-repeat="movie in movies"><a ng-href="http://www.imdb.com/title/{{movie.imdbID}}" target="_blank"><img ng-if="movie.Poster !== 'N/A'" src="{{movie.Poster}}" class="poster" alt="Movie poster for {{movie.Title}}"></a>
+    </td>
+  </tr> -->
   <tr>
     <td class="plot" ng-repeat="movie in movies">{{movie.Plot}}</td>
   </tr>
