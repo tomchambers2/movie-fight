@@ -24,7 +24,7 @@ angular.module('moviefightApp')
   			'search',
   			{ 'Movie': $scope.query }
   		);
-		);
+		
 
   		$scope.loading = true;
 
