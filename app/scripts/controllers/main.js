@@ -20,14 +20,10 @@ angular.module('moviefightApp')
   	};
 
   	$scope.search = function() {
-  		mixpanel.track(
+  		analytics.track(
   			'search',
   			{ 'Movie': $scope.query }
   		);
-
-  		calq.action.track(
-		    'search',
-		    { 'Movie': $scope.query }
 		);
 
   		$scope.loading = true;
@@ -37,20 +33,19 @@ angular.module('moviefightApp')
 	  			$scope.movies.push(result.data);
 	  			$scope.query = '';
 	  			$scope.year = '';
-	  			mixpanel.track('search-success');
+	  			analytics.track('search-success');
 	  		} else {
 	  			var message = 'Sorry, we couldn\'t find that movie';
 	  			if (!$scope.year) {
 	  				message += '. Try adding a year?';
 	  			}
 	  			showMessage(message);
-	  			mixpanel.track('search-not-found', { 'Movie': $scope.query });
-	  			calq.action.track('search-not-found', { 'Movie': $scope.query });
+	  			analytics.track('search-not-found', { 'Movie': $scope.query });
 	  		}
 	  		$scope.loading = false;	  		
   		}, function() {
   			showMessage('Sorry, the service may not be working at the moment. Try us later.');
-  			mixpanel.track('http-fail');
+  			analytics.track('http-fail');
   			$scope.loading = false;
   		});
   	};
@@ -58,6 +53,6 @@ angular.module('moviefightApp')
   	$scope.remove = function(id) {
       console.log("removing "+id)
   		$scope.movies.splice(id,1);
-  		mixpanel.track('removed-movie');
+  		analytics.track('removed-movie');
   	};
   });
